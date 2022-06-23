@@ -1,8 +1,7 @@
 ﻿namespace DataAccess.Models;
 
-public class Event
+public class Event : ModelBase
 {
-    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public DateTime DateTime { get; set; }
