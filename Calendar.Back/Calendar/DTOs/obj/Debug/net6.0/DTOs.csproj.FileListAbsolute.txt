@@ -1,0 +1,12 @@
+D:\Calendar\Calendar.Back\Calendar\DTOs\bin\Debug\net6.0\DTOs.deps.json
+D:\Calendar\Calendar.Back\Calendar\DTOs\bin\Debug\net6.0\DTOs.dll
+D:\Calendar\Calendar.Back\Calendar\DTOs\bin\Debug\net6.0\DTOs.pdb
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\DTOs.csproj.AssemblyReference.cache
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\DTOs.GeneratedMSBuildEditorConfig.editorconfig
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\DTOs.AssemblyInfoInputs.cache
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\DTOs.AssemblyInfo.cs
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\DTOs.csproj.CoreCompileInputs.cache
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\DTOs.dll
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\refint\DTOs.dll
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\DTOs.pdb
+D:\Calendar\Calendar.Back\Calendar\DTOs\obj\Debug\net6.0\ref\DTOs.dll

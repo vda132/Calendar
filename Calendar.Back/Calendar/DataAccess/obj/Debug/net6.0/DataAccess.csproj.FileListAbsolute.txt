@@ -1,0 +1,14 @@
+D:\Calendar\Calendar.Back\Calendar\DataAccess\bin\Debug\net6.0\DataAccess.deps.json
+D:\Calendar\Calendar.Back\Calendar\DataAccess\bin\Debug\net6.0\DataAccess.runtimeconfig.json
+D:\Calendar\Calendar.Back\Calendar\DataAccess\bin\Debug\net6.0\DataAccess.dll
+D:\Calendar\Calendar.Back\Calendar\DataAccess\bin\Debug\net6.0\DataAccess.pdb
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.csproj.AssemblyReference.cache
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfoInputs.cache
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfo.cs
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.dll
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\refint\DataAccess.dll
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.pdb
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\DataAccess.genruntimeconfig.cache
+D:\Calendar\Calendar.Back\Calendar\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll

@@ -1,0 +1,15 @@
+D:\Calendar\Calendar.Back\Calendar\Repository\bin\Debug\net6.0\Repository.deps.json
+D:\Calendar\Calendar.Back\Calendar\Repository\bin\Debug\net6.0\Repository.dll
+D:\Calendar\Calendar.Back\Calendar\Repository\bin\Debug\net6.0\Repository.pdb
+D:\Calendar\Calendar.Back\Calendar\Repository\bin\Debug\net6.0\DataAccess.dll
+D:\Calendar\Calendar.Back\Calendar\Repository\bin\Debug\net6.0\DataAccess.pdb
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.csproj.AssemblyReference.cache
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.AssemblyInfoInputs.cache
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.AssemblyInfo.cs
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.csproj.CoreCompileInputs.cache
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.csproj.CopyComplete
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.dll
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\refint\Repository.dll
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\Repository.pdb
+D:\Calendar\Calendar.Back\Calendar\Repository\obj\Debug\net6.0\ref\Repository.dll
