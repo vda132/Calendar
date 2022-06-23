@@ -50,7 +50,8 @@ public class EventRepository : IEventRepository
             return false;
 
         @event.Name = model.Name;
-        @event.DateTime = model.DateTime;
+        @event.DateTimeTo = model.DateTimeTo;
+        @event.DateTimeFrom = model.DateTimeFrom;
         @event.Description = model.Description;
 
         await context.SaveChangesAsync();
