@@ -13,7 +13,7 @@ public class EventLogic : IEventLogic
 
     public async Task<Guid> AddAsync(Event model)
     {
-        if (!BeforeAdd(model))
+        if (!(await BeforeAdd(model)))
             return default;
 
         return await repository.AddAsync(model);
@@ -45,11 +45,16 @@ public class EventLogic : IEventLogic
             Description = dto.Description
         };
 
-    private bool BeforeAdd(Event model)
+    private async Task<bool> BeforeAdd(Event model)
     {
         if (string.IsNullOrEmpty(model.Name) ||
             string.IsNullOrEmpty(model.Description) ||
             model.DateTimeTo > model.DateTimeFrom)
+            return false;
+
+        var events = await repository.GetAllAsyns();
+
+        if (events.FirstOrDefault(x => x.DateTimeTo == model.DateTimeTo || x.DateTimeFrom == model.DateTimeFrom) is not null)
             return false;
 
         return true;
@@ -65,6 +70,13 @@ public class EventLogic : IEventLogic
         if (string.IsNullOrEmpty(model.Name) ||
             string.IsNullOrEmpty(model.Description) ||
             model.DateTimeTo > model.DateTimeFrom)
+            return false;
+
+        var events = await repository.GetAllAsyns();
+
+        if (events.FirstOrDefault(x => (x.DateTimeTo == model.DateTimeTo 
+                                    || x.DateTimeFrom == model.DateTimeFrom) 
+                                    && x.Id != id) is not null)
             return false;
 
         return true;

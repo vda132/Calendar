@@ -6,11 +6,11 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EventController : ControllerBase
+    public class EventsController : ControllerBase
     {
         private readonly IEventLogic logic;
 
-        public EventController(IEventLogic logic) =>
+        public EventsController(IEventLogic logic) =>
             this.logic = logic;
 
         [HttpGet]
