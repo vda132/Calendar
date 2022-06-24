@@ -44,8 +44,8 @@ function App() {
     <>
       <Header today={today} previousHandler={prevHandler} todayHandler={todayHandler} nextHandler={nextHandler} selectedDisplayMode={selectedDisplayMode} setSelectedDisplayMode={setSelectedDisplayMode} />
       <div style={{ display: "flex"}}>
-        <SmallCalendar todaySmallCalendar={todaySmallCalendar} startDaySmallCalendar={startDaySmallCalendar} totalDays={35} prevSmallCalendarHandler={prevSmallCalendarHandler} nextSmallCalendarHandler={nextSmallCalendarHandler} selectedDateSmallCalendar={selectedDateSmallCalendar}/>
-        <MonthCalendarGrid startDay={startDay} today={today} totalDays={35} />
+        <SmallCalendar todaySmallCalendar={todaySmallCalendar} startDaySmallCalendar={startDaySmallCalendar} totalDays={42} prevSmallCalendarHandler={prevSmallCalendarHandler} nextSmallCalendarHandler={nextSmallCalendarHandler} selectedDateSmallCalendar={selectedDateSmallCalendar}/>
+        <MonthCalendarGrid startDay={startDay} today={today} totalDays={42} />
       </div>
     </>
   );
