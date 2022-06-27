@@ -52,18 +52,46 @@ const DayWrapper = styled.div`
 	cursor: pointer;
     background: ${props => props.isCurrentDay ? '#0000FF' : ''};
     border-radius: 50%;
-    color:  ${props => props.isCurrentDay ?'#FFFFFF':''};
+    color:  ${props => props.isCurrentDay ? '#FFFFFF' : ''};
     display: flex;
     align-items: center;
     justify-content: center;
 
 ;`
 
+const EventListWrapper = styled('ul')`
+	margin: unset;
+`;
 
-const MonthCalendarGrid = ({ startDay, today, totalDays }) => {
+const EventItemWrapper = styled('button')`
+    display:flex;
+	position: relative;
+	left: -14px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 114px;
+	border: unset;
+	background:blue;
+    border-radius: 3px;
+	color:white;
+	cursor: pointer;
+	margin-top:1px;
+	padding: 0;
+	text-align: left;
+    justify-content: space-between;
+`;
+
+const EventButton = styled.button`
+
+`;
+
+
+const MonthCalendarGrid = ({ startDay, today, totalDays, events, deleteEventHadler }) => {
     const day = startDay.clone().subtract(1, 'day');
     const daysMap = [...Array(totalDays)].map(() => day.add(1, 'day').clone())
     const isCurrentDay = (day) => moment().isSame(day, 'day');
+
     return (
         <ContentWrapper>
             <GridWrapper>
@@ -79,29 +107,59 @@ const MonthCalendarGrid = ({ startDay, today, totalDays }) => {
             </GridWrapper>
             <GridWrapper>
                 {
-                    daysMap.map((dayItem) => (
-                        <CellWrapper>
-                            <RowInCell justifyContent={'flex-end'}>
-                                <ShowDayWrapper>
-                                    {
-                                        isCurrentDay(dayItem) ?
-                                            (
-                                                <DayWrapper isCurrentDay>
+                    daysMap.map((dayItem) => {
+                        let filteredEvents = events.filter(event => new Date(event.dateTimeFrom).toDateString() == dayItem.format("ddd MMM D YYYY"));
+                        console.log(filteredEvents.length);
+                        return (
+                            <CellWrapper>
+                                <RowInCell justifyContent={'flex-end'}>
+                                    <ShowDayWrapper>
+                                        {
+                                            isCurrentDay(dayItem) ?
+                                                (
+                                                    <DayWrapper isCurrentDay onClick={() => { console.log(dayItem) }}>
+                                                        {dayItem.format('D')}
+                                                    </DayWrapper>
+                                                ) : (<DayWrapper onClick={() => { console.log(dayItem) }}>
                                                     {dayItem.format('D')}
                                                 </DayWrapper>
-                                            ) : (<DayWrapper onClick={()=>{console.log(dayItem)}}>
-                                                {dayItem.format('D')}
-                                            </DayWrapper>
-                                            )
-                                    }
-                                </ShowDayWrapper>
-                            </RowInCell>
-                        </CellWrapper>
-                    ))
-                }
-            </GridWrapper>
-        </ContentWrapper>
-    )
-}
+                                                )
+                                        }
+                                    </ShowDayWrapper>
 
-export { MonthCalendarGrid }
+                                    {filteredEvents.length > 2 ? (
+                                        <>
+                                        <EventListWrapper>
+                                            {filteredEvents.slice(0, 2).map((item) => (
+                                                <EventItemWrapper>
+                                                    {item.name}
+                                                    <EventButton onClick={()=> deleteEventHadler(item.id)}>X</EventButton>
+
+                                                </EventItemWrapper>
+                                            ))}
+                                        </EventListWrapper>
+                                            <button style={{marginTop:"5px"}} onClick={() => { console.log(filteredEvents) }}>Look all</button>
+                                        </>
+                                    )
+                                        : (
+                                            filteredEvents.map((item) => (
+                                                <EventListWrapper>
+                                                    <EventItemWrapper>
+                                                        {item.name}
+                                                        <EventButton onClick={()=>  deleteEventHadler(item.id)}>X</EventButton>
+                                                    </EventItemWrapper>
+                                                </EventListWrapper>
+                                        )))}
+
+
+                                                    </RowInCell>
+                                                </CellWrapper>
+                                            )
+                    })
+                }
+                                </GridWrapper>
+                            </ContentWrapper >
+                        )
+                    }
+
+export {MonthCalendarGrid}

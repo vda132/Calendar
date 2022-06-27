@@ -1,4 +1,5 @@
-﻿using DTOs;
+﻿using DataAccess.Models;
+using DTOs;
 using Logic.Logic;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,8 +15,13 @@ namespace API.Controllers
             this.logic = logic;
 
         [HttpGet]
-        public async Task<JsonResult> GetAll() =>
-            new JsonResult(await this.logic.GetAllAsyns());
+        public async Task<JsonResult> GetAll() 
+        {
+            var result = await this.logic.GetAllAsyns();
+            var resultEvents = result.OrderBy(x => x.DateTimeFrom);
+            
+            return new JsonResult(resultEvents);
+        }
 
         [HttpGet("{id}")]
         public async Task<JsonResult> Get(Guid id) =>

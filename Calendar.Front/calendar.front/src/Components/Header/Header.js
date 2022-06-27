@@ -82,7 +82,7 @@ const OptionWrapper = styled('option')`
 `;
 
 
-const Header = ({ today, previousHandler, todayHandler, nextHandler, selectedDisplayMode, setSelectedDisplayMode }) => {
+const Header = ({ today, previousHandler, todayHandler, nextHandler, selectedDisplayMode, selectedDisplayModeHandler }) => {
     return (
         <DivWrapper>
             <ContentWrapper>
@@ -94,7 +94,7 @@ const Header = ({ today, previousHandler, todayHandler, nextHandler, selectedDis
                 <TitleWrapper>{today.format('MMMM')} {today.format('YYYY')}</TitleWrapper>
             </ContentWrapper>
             <SelectWrapper
-                onChange={e => setSelectedDisplayMode(e.target.value)}
+                onChange={e => selectedDisplayModeHandler(e.target.value)}
                 value={selectedDisplayMode}>
                 <OptionWrapper value="month">Month</OptionWrapper>
                 <OptionWrapper value="week">Week</OptionWrapper>
