@@ -1,6 +1,7 @@
 import React from "react";
 import moment from 'moment';
 import styled from 'styled-components';
+import { EventsList } from "../EventList/EventsList";
 
 const GridWrapperHeader = styled.div`
     margin-left:67px;
@@ -12,7 +13,7 @@ const GridWrapperHeader = styled.div`
 
 const CellWrapperHeader = styled.div`
     height: 55px;
-    width: 140px;
+    min-width: 140px;
     background-color: '#fff';
     color: '#555759';
     border: #dadce0 1px solid;
@@ -37,7 +38,7 @@ const TimeWrapper = styled.div`
 `;
 
 const Time = styled.div`
-    height:62px;
+    height:82px;
     magrin-right:5px;
 `;
 
@@ -55,16 +56,16 @@ const GridWrapper = styled.div`
 
 const CellWrapper = styled.div`
     z-index:1;
-    min-height: 60px;
-    width: 140px;
+    height: 80px;
+    min-width: 140px;
     background-color: '#fff';
     color: '#555759';
     border: #dadce0 1px solid;
 `;
 
 const Cell = styled.div`
-    z-index:1;
-    min-height: 60px;
+    z-index:0;
+    height: 80px;
     width: 140px;
     cursor: pointer;
 `;
@@ -88,15 +89,16 @@ const EventTitle = styled.div`
     font-size:15px;
 `
 
-const WeekCalendarGrid = ({ today, deleteEventHadler, events }) => {
+const WeekCalendarGrid = ({ today, deleteEventHadler, events, showFormForAddingWeekHandler, showFormForUpdateHandler, showFormForAlEventsHandler }) => {
     const startDay = today.clone().startOf("week").startOf("day").subtract(1, 'day');
     const daysMap = [...Array(7)].map(() => startDay.add(1, 'day').clone());
-    console.log(daysMap);
+    
     const hours = [...Array(24)].map(() => startDay.add(1, "hour").clone());
+
     const cells = [...Array(24)].map(() => [...Array(7)].map(() => 0));
-    console.log(cells);
-    const isCurrentDay = (day) => moment().isSame(day, 'day');
    
+    const isCurrentDay = (day) => moment().isSame(day, 'day');
+
 
     const getEvents = (dateIndex, timeIndex) => {
         return events.filter((elem) => new Date(elem.dateTimeFrom).toDateString() == daysMap[dateIndex].format("ddd MMM D YYYY") && new Date(elem.dateTimeFrom).getHours() == hours[timeIndex].format("H"));
@@ -133,23 +135,14 @@ const WeekCalendarGrid = ({ today, deleteEventHadler, events }) => {
                 <GridWrapper>
                     {
                         cells.map((cell, i) => (
-                            cell.map((row, j) => { return(
-                                getEvents(j, i) ? (
+                            cell.map((row, j) => {
+                                return (
                                     <CellWrapper>
-                                        {getEvents(j, i).map((event) => (
-                                        <EventSlot>
-                                            <EventTitle>{event.name}</EventTitle>
-                                            <button className="delete" onClick={()=> deleteEventHadler(event.id)}>X</button>
-                                        </EventSlot>
-                                    )
-                                    )}
-                                    <Cell></Cell>
-                                </CellWrapper>) : (
-                                <CellWrapper>
-
-                                </CellWrapper>
+                                        <EventsList events={getEvents(j, i)} deleteEventHadler={deleteEventHadler} showFormForUpdateHandler={showFormForUpdateHandler} showFormForAlEventsHandler={showFormForAlEventsHandler}/>
+                                        <Cell onClick={() => showFormForAddingWeekHandler(daysMap[j], hours[i], hours[parseInt(i+1)])}></Cell>
+                                    </CellWrapper>
                                 )
-                            )})))}
+                            })))}
                 </GridWrapper>
             </ContentWrapper>
 

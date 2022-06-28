@@ -1,6 +1,7 @@
 import React from "react";
 import moment from 'moment';
 import styled from 'styled-components';
+import { EventsList } from "../EventList/EventsList";
 
 const ContentWrapper = styled.div`  
     width:80%;
@@ -34,7 +35,6 @@ const RowInCell = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: ${props => props.justifyContent ? props.justifyContent : 'flex-start'};
-	${props => props.pr && `padding-right: ${props.pr * 8}px`}
 `;
 
 const ShowDayWrapper = styled('div')`
@@ -56,38 +56,11 @@ const DayWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
 ;`
 
-const EventListWrapper = styled('ul')`
-	margin: unset;
-`;
-
-const EventItemWrapper = styled('button')`
-    display:flex;
-	position: relative;
-	left: -14px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	width: 114px;
-	border: unset;
-	background:blue;
-    border-radius: 3px;
-	color:white;
-	cursor: pointer;
-	margin-top:1px;
-	padding: 0;
-	text-align: left;
-    justify-content: space-between;
-`;
-
-const EventButton = styled.button`
-
-`;
 
 
-const MonthCalendarGrid = ({ startDay, today, totalDays, events, deleteEventHadler }) => {
+const MonthCalendarGrid = ({ startDay, today, totalDays, events, deleteEventHadler, showFormForAddingMonthHandler, showFormForUpdateHandler, showFormForAlEventsHandler }) => {
     const day = startDay.clone().subtract(1, 'day');
     const daysMap = [...Array(totalDays)].map(() => day.add(1, 'day').clone())
     const isCurrentDay = (day) => moment().isSame(day, 'day');
@@ -109,7 +82,6 @@ const MonthCalendarGrid = ({ startDay, today, totalDays, events, deleteEventHadl
                 {
                     daysMap.map((dayItem) => {
                         let filteredEvents = events.filter(event => new Date(event.dateTimeFrom).toDateString() == dayItem.format("ddd MMM D YYYY"));
-                        console.log(filteredEvents.length);
                         return (
                             <CellWrapper>
                                 <RowInCell justifyContent={'flex-end'}>
@@ -117,49 +89,25 @@ const MonthCalendarGrid = ({ startDay, today, totalDays, events, deleteEventHadl
                                         {
                                             isCurrentDay(dayItem) ?
                                                 (
-                                                    <DayWrapper isCurrentDay onClick={() => { console.log(dayItem) }}>
+                                                    <DayWrapper isCurrentDay onClick={() => { showFormForAddingMonthHandler(dayItem) }}>
                                                         {dayItem.format('D')}
                                                     </DayWrapper>
-                                                ) : (<DayWrapper onClick={() => { console.log(dayItem) }}>
-                                                    {dayItem.format('D')}
-                                                </DayWrapper>
+                                                ) : (
+                                                    <DayWrapper onClick={() => { showFormForAddingMonthHandler(dayItem) }}>
+                                                        {dayItem.format('D')}
+                                                    </DayWrapper>
                                                 )
                                         }
                                     </ShowDayWrapper>
-
-                                    {filteredEvents.length > 2 ? (
-                                        <>
-                                        <EventListWrapper>
-                                            {filteredEvents.slice(0, 2).map((item) => (
-                                                <EventItemWrapper>
-                                                    {item.name}
-                                                    <EventButton onClick={()=> deleteEventHadler(item.id)}>X</EventButton>
-
-                                                </EventItemWrapper>
-                                            ))}
-                                        </EventListWrapper>
-                                            <button style={{marginTop:"5px"}} onClick={() => { console.log(filteredEvents) }}>Look all</button>
-                                        </>
-                                    )
-                                        : (
-                                            filteredEvents.map((item) => (
-                                                <EventListWrapper>
-                                                    <EventItemWrapper>
-                                                        {item.name}
-                                                        <EventButton onClick={()=>  deleteEventHadler(item.id)}>X</EventButton>
-                                                    </EventItemWrapper>
-                                                </EventListWrapper>
-                                        )))}
-
-
-                                                    </RowInCell>
-                                                </CellWrapper>
-                                            )
+                                    <EventsList events={filteredEvents} deleteEventHadler={deleteEventHadler} showFormForUpdateHandler={showFormForUpdateHandler} showFormForAlEventsHandler={showFormForAlEventsHandler}/>
+                                </RowInCell>
+                            </CellWrapper>
+                        )
                     })
                 }
-                                </GridWrapper>
-                            </ContentWrapper >
-                        )
-                    }
+            </GridWrapper>
+        </ContentWrapper >
+    )
+}
 
-export {MonthCalendarGrid}
+export { MonthCalendarGrid }

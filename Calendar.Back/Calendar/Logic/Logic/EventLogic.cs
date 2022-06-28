@@ -69,7 +69,7 @@ public class EventLogic : IEventLogic
 
         if (string.IsNullOrEmpty(model.Name) ||
             string.IsNullOrEmpty(model.Description) ||
-            model.DateTimeTo > model.DateTimeFrom)
+            model.DateTimeTo < model.DateTimeFrom)
             return false;
 
         var events = await repository.GetAllAsyns();

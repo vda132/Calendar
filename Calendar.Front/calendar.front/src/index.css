@@ -14,9 +14,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 
